@@ -1,0 +1,47 @@
+Para saber mais: alterando os nomes de colunas
+Discutir no fórum
+Quando trabalhamos com bases de dados, em alguns momentos, pode ser necessário fazermos alterações nos nomes das colunas. Por exemplo, quando criamos o seguinte DataFrame no nosso projeto:
+
+
+Copiar
+df['Tipo'].value_counts(normalize=True).to_frame().sort_values('Tipo')
+
+Tivemos o seguinte resultado:
+
+Tipo
+Studio	0.000173078
+Loft	0.00220674
+Casa de Vila	0.0107741
+Flat	0.0205963
+Quitinete	0.0361733
+Casa	0.0418415
+Casa de Condomínio	0.0430964
+Apartamento	0.845139
+Podemos notar que a coluna com os percentuais, ficou nomeada como "Tipo". E se quiséssemos mudar o nome dela para "Percentuais"?
+
+Nesse caso, nós podemos utilizar o método rename() para mudar o nome dessa coluna. Esse método nos permite especificar um dicionário que associa o nome antigo da coluna ao novo nome que queremos atribuir. Então, vamos fazer isso:
+
+
+Copiar
+# Salvando o DataFrame em uma variável
+df_exemplo = df['Tipo'].value_counts(normalize=True).to_frame().sort_values('Tipo')
+
+df_exemplo.rename(columns={'Tipo': 'Percentuais'}, inplace=True)
+
+# Visualizando o DataFrame
+df_exemplo
+
+Nós utilizamos o parâmetro inplace=True para que essa alteração seja definitivamente aplicada no nosso DataFrame df_exemplo. Sendo assim, ao visualizar o DataFrame, teremos o seguinte resultado:
+
+Percentuais
+Studio	0.000173078
+Loft	0.00220674
+Casa de Vila	0.0107741
+Flat	0.0205963
+Quitinete	0.0361733
+Casa	0.0418415
+Casa de Condomínio	0.0430964
+Apartamento	0.845139
+E pronto! Agora nós também sabemos como alterar nomes de colunas em um DataFrame.
+
+
